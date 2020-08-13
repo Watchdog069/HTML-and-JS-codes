@@ -1,0 +1,365 @@
+
+<html>
+<head>
+  <title>Calculator</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<style type="text/css">
+	button {
+    min-width: 60px;
+    max-width: 60px;
+}
+</style>
+
+<body>
+
+        <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Watch the video for instructions</h4>
+        </div>
+        <div class="modal-body">
+          <p>
+          <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" width="560" height="315" src="https://www.youtube.com/embed/YAliBOOEnVc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+	<div class="container">
+	<h1>Scientific Calculator</h1>
+	<br><input class="col-xs-8" type="text" size="40" disabled id="input">
+	<br><br>
+	<div class="row">
+	<button type="button" class="btn btn-danger" id="back"><---</button>
+	<button type="button" class="btn btn-danger" id="cancel">C</button>
+	<button type="button" class="btn btn-danger" id="signchange">+/-</button>
+        <button type="button" class="btn btn-warning" type="button"  data-toggle="modal" data-target="#myModal"><i class="fa fa-question-circle"></i></button>
+	 
+            
+
+     <br><br>
+	 <button type="button" class="btn" id="sinh">sinh</button>
+	 <button type="button" class="btn" id="cosh">cosh</button>
+	 <button type="button" class="btn" id="tanh">tanh</button>
+	 <button type="button" class="btn" id="xpowy">x<sup>y</sup></button>
+	 <button type="button" class="btn" id="open">(</button>
+     <button type="button" class="btn" id="close">)</button> 
+     <button type="button" class="btn" id="seven">7</button>
+	 <button type="button" class="btn" id="eight">8</button>
+	 <button type="button" class="btn" id="nine">9</button>
+	 <button type="button" class="btn" id="divide">/</button>
+	 <button type="button" class="btn" id="modulo">%</button>
+
+	 <br><br>
+	 <button type="button" class="btn" id="asinh">sinh<sup>-1</sup></button>
+	 <button type="button" class="btn" id="acosh">cosh<sup>-1</sup></button>
+	 <button type="button" class="btn" id="atanh">tanh<sup>-1</sup></button>
+	 <button type="button" class="btn" id="log2">log<sub>2</sub>x</button>
+	 <button type="button" class="btn" id="ln">ln</button>
+	 <button type="button" class="btn" id="log10">log<sub>10</sub></button>
+	 <button type="button" class="btn" id="four">4</button>
+	 <button type="button" class="btn" id="five">5</button>
+	 <button type="button" class="btn" id="six">6</button>
+	 <button type="button" class="btn" id="mul">*</button>
+	 <button type="button" class="btn" id="inv">1/x</button>
+
+	 <br><br>
+	 
+	 <button type="button" class="btn" id="sin">sin</button>
+	 <button type="button" class="btn" id="cos">cos</button>
+	 <button type="button" class="btn" id="tan">tan</button>
+	 <button type="button" class="btn" id="x2">x<sup>2</sup></button>
+	 <button type="button" class="btn" id="x3">x<sup>3</sup></button>
+	 <button type="button" class="btn" id="abs">abs x</button>
+	 <button type="button" class="btn" id="one">1</button>
+	 <button type="button" class="btn" id="two">2</button>
+	 <button type="button" class="btn" id="three">3</button>
+	 <button type="button" class="btn" id="minus">-</button>
+	 <button type="button" class="btn" id="add">+</button>
+
+	 <br><br>
+	 <button type="button" class="btn" id="pi">pi</button>
+	 <button type="button" class="btn" id="exp">e</button>
+	 <button type="button" class="btn" id="fact">n!</sup></button>
+	 <button type="button" class="btn" id="logxy">log<sub>y</sub>x</button> 
+	 <button type="button" class="btn" id="epow">e<sup>x</sup></button> 
+	 <button type="button" class="btn" id="tenpow">10<sup>x</sup></button> 
+	 <button type="button" class="btn" id="sqrt">√</button> 
+	 <button type="button" class="btn" id="cubrt"><sup>3</sup>√</button>
+	 <button type="button" class="btn" id="zero">0</button>
+	 <button type="button" class="btn" id="point">.</button>
+	 <button type="button" class="btn btn-success btn-lg" style="max-width: 120px;" id="equals">=</button>
+	 
+	 </div>
+</div>
+</body>
+
+<script type="text/javascript">
+	var str="";
+	document.getElementById("open").onclick=function(){
+		str+="(";
+		document.getElementById("input").value=str;
+	}
+	document.getElementById("close").onclick=function(){
+		str+=")";
+		document.getElementById("input").value=str;
+	}
+	document.getElementById("one").onclick=function(){
+		str+="1";
+		document.getElementById("input").value=str;
+	}
+	document.getElementById("two").onclick=function(){
+		str+="2";
+		document.getElementById("input").value=str;
+	}
+	document.getElementById("three").onclick=function(){
+		str+="3";
+		document.getElementById("input").value=str;
+	}
+	document.getElementById("four").onclick=function(){
+		str+="4";
+		document.getElementById("input").value=str;
+	}
+	document.getElementById("five").onclick=function(){
+		str+="5";
+		document.getElementById("input").value=str;
+	}
+	document.getElementById("six").onclick=function(){
+		str+="6";
+		document.getElementById("input").value=str;
+	}
+	document.getElementById("seven").onclick=function(){
+		str+="7";
+		document.getElementById("input").value=str;
+	}
+	document.getElementById("eight").onclick=function(){
+		str+="8";
+		document.getElementById("input").value=str;
+	}
+	document.getElementById("nine").onclick=function(){
+		str+="9";
+		document.getElementById("input").value=str;
+	}
+	document.getElementById("zero").onclick=function(){
+		str+="0";
+		document.getElementById("input").value=str;
+	}
+	document.getElementById("add").onclick=function(){
+		str+="+";
+		document.getElementById("input").value=str;
+	}
+	document.getElementById("minus").onclick=function(){
+		str+="-";
+		document.getElementById("input").value=str;
+	}
+	document.getElementById("mul").onclick=function(){
+		str+="*";
+		document.getElementById("input").value=str;
+	}
+	document.getElementById("divide").onclick=function(){
+		str+="/";
+		document.getElementById("input").value=str;
+	}
+	document.getElementById("modulo").onclick=function(){
+		str+="%";
+		document.getElementById("input").value=str;
+	}
+	document.getElementById("point").onclick=function(){
+		str+=".";
+		document.getElementById("input").value=str;
+	}
+	document.getElementById("xpowy").onclick=function(){
+		str+="pow";
+		document.getElementById("input").value=str;
+	}
+	document.getElementById("logxy").onclick=function(){
+		str+="log";
+		document.getElementById("input").value=str;
+	}
+	document.getElementById("equals").onclick=function(){
+		if(str.search("log")!=-1){
+			var temp,arr;
+			temp=str.replace("log",",");
+			arr=temp.split(",");
+			str=Math.log( Number(arr[0])) / Number(Math.log(arr[1]) ).toString() ;
+			document.getElementById("input").value=str;
+		}
+		else if(str.search("pow")!=-1){
+			var temp,arr;
+			temp=str.replace("pow",",");
+			arr=temp.split(",");
+			str=Math.pow( Number(arr[0]) , Number(arr[1]) ).toString();
+			document.getElementById("input").value=str;
+		}
+		else{
+			document.getElementById("input").value=eval(str);
+			str=document.getElementById("input").value;
+		}
+	}
+	document.getElementById("cancel").onclick=function(){
+		str="";
+		document.getElementById("input").value=0;
+	}
+	document.getElementById("inv").onclick=function(){
+		var num=document.getElementById("input").value;
+		document.getElementById("input").value=1/num;
+		str=(1/num).toString();
+	}
+	document.getElementById("epow").onclick=function(){
+		var num=document.getElementById("input").value;
+		var ans=Math.pow(Math.exp(1),num); 
+		document.getElementById("input").value=ans;
+		str=ans.toString();
+	}
+	document.getElementById("tenpow").onclick=function(){
+		var num=document.getElementById("input").value;
+		var ans=Math.pow(10,num); 
+		document.getElementById("input").value=ans;
+		str=ans.toString();
+	}
+	document.getElementById("exp").onclick=function(){
+		document.getElementById("input").value=Math.exp(1);
+		str+=Math.exp(1).toString();
+	}
+	document.getElementById("pi").onclick=function(){
+		document.getElementById("input").value=Math.PI;
+		str+=Math.PI.toString();
+	}
+	document.getElementById("sqrt").onclick=function(){
+		var num=Math.sqrt(document.getElementById("input").value);
+		document.getElementById("input").value=num;
+		str=num.toString();		
+	}
+	document.getElementById("cubrt").onclick=function(){
+		var num=Math.cbrt(document.getElementById("input").value);
+		document.getElementById("input").value=num;
+		str=num.toString();		
+	}
+	document.getElementById("fact").onclick=function(){
+		var num=Math.round(document.getElementById("input").value);
+		var fact=1;
+		for(var i=1;i<=num;i++)
+			fact*=i;
+		document.getElementById("input").value=fact;
+		str=fact.toString();
+	}
+	document.getElementById("sin").onclick=function(){
+		var num=Math.sin(document.getElementById("input").value);
+		document.getElementById("input").value=num;
+		str=num.toString();	
+	}
+	document.getElementById("cos").onclick=function(){
+		var num=Math.cos(document.getElementById("input").value);
+		document.getElementById("input").value=num;
+		str=num.toString();	
+	}
+	document.getElementById("tan").onclick=function(){
+		var num=Math.tan(document.getElementById("input").value);
+		document.getElementById("input").value=num;
+		str=num.toString();	
+	}
+	document.getElementById("sinh").onclick=function(){
+		var num=Math.sinh(document.getElementById("input").value);
+		document.getElementById("input").value=num;
+		str=num.toString();	
+	}
+	document.getElementById("cosh").onclick=function(){
+		var num=Math.cosh(document.getElementById("input").value);
+		document.getElementById("input").value=num;
+		str=num.toString();	
+	}
+	document.getElementById("tanh").onclick=function(){
+		var num=Math.tanh(document.getElementById("input").value);
+		document.getElementById("input").value=num;
+		str=num.toString();	
+	}
+	document.getElementById("asinh").onclick=function(){
+		var num=Math.asinh(document.getElementById("input").value);
+		document.getElementById("input").value=num;
+		str=num.toString();	
+	}
+	document.getElementById("acosh").onclick=function(){
+		var num=Math.acosh(document.getElementById("input").value);
+		document.getElementById("input").value=num;
+		str=num.toString();	
+	}
+	document.getElementById("atanh").onclick=function(){
+		var num=Math.atanh(document.getElementById("input").value);
+		document.getElementById("input").value=num;
+		str=num.toString();	
+	}  
+	document.getElementById("log2").onclick=function(){
+		var num=Math.log2(document.getElementById("input").value);
+		document.getElementById("input").value=num;
+		str=num.toString();	
+	}  
+	document.getElementById("ln").onclick=function(){
+		var num=Math.log(document.getElementById("input").value);
+		document.getElementById("input").value=num;
+		str=num.toString();	
+	}  
+	document.getElementById("log10").onclick=function(){
+		var num=Math.log10(document.getElementById("input").value);
+		document.getElementById("input").value=num;
+		str=num.toString();	
+	} 
+	document.getElementById("x2").onclick=function(){
+		var num=Math.pow(document.getElementById("input").value,2);
+		document.getElementById("input").value=num;
+		str=num.toString();	
+	} 
+	document.getElementById("x3").onclick=function(){
+		var num=Math.pow(document.getElementById("input").value,3);
+		document.getElementById("input").value=num;
+		str=num.toString();	
+	} 
+	document.getElementById("abs").onclick=function(){
+		var num=Math.abs(document.getElementById("input").value);
+		document.getElementById("input").value=num;
+		str=num.toString();	
+	} 
+	document.getElementById("back").onclick=function(){
+		str = str.slice(0,str.length-1); 
+		document.getElementById("input").value=str;
+	}
+
+	var sign="-";
+	document.getElementById("signchange").onclick=function(){
+		var final;
+		if(Math.sign(eval(str))==1){
+			final=sign.concat(str); 
+			sign="";
+			console.log("+");
+			document.getElementById("input").value=final;
+			str=document.getElementById("input").value;
+		}
+		else{
+			final=str.slice(1,str.length); 
+			sign="-";
+			console.log("-");
+			document.getElementById("input").value=final;
+			str=document.getElementById("input").value;
+		}
+		str=document.getElementById("input").value;
+	}
+
+	
+</script>
+</html>
