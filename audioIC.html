@@ -1,0 +1,671 @@
+<html>
+<body>
+<h1>test</h1>
+<br>
+ Lower limit <input type="number" placeholder="R1" required autofocus id="r1"><br><br>
+ Upper limit <input type="number" placeholder="R2" required autofocus id="r2"><br><br>
+ <button onclick="res()">Check</button>
+ <button onclick="reset()">Reset</button>
+<p id="demo"></p>
+</body>
+<script>
+var tab=
+{
+    "Table": [
+        {
+            "ICName": "TDA1904 4W audio amplifier pdf",
+            "Wattage": "4"
+        },
+        {
+            "ICName": "TDA1905 5W audio amplifier with muting pdf",
+            "Wattage": "5"
+        },
+        {
+            "ICName": "TDA1910 10W audio amplifier with muting pdf",
+            "Wattage": "10"
+        },
+        {
+            "ICName": "TDA2003 10W car radio audio amplifier pdf",
+            "Wattage": "10"
+        },
+        {
+            "ICName": "TDA2005 20W bridge amplifier for car radio pdf",
+            "Wattage": "20"
+        },
+        {
+            "ICName": "TDA2006 12W audio amplifier pdf",
+            "Wattage": "12"
+        },
+        {
+            "ICName": "TDA2007A 6 + 6W stereo amplifier pdf",
+            "Wattage": "6"
+        },
+        {
+            "ICName": "TDA2009A 10+10W stereo amplifier pdf",
+            "Wattage": "10"
+        },
+        {
+            "ICName": "TDA2030 14W Hi-Fi audio amplifier pdf",
+            "Wattage": "14"
+        },
+        {
+            "ICName": "TDA2030A 18W hi-fi amplifier and 35W driver pdf",
+            "Wattage": "18"
+        },
+        {
+            "ICName": "TDA2040 20W hi-fi audio power amplifier pdf",
+            "Wattage": "20"
+        },
+        {
+            "ICName": "TDA2050 32W hi-fi audio power amplifier pdf",
+            "Wattage": "32"
+        },
+        {
+            "ICName": "TDA2052 60W hi-fi audio power amplifier with mute stand-by pdf",
+            "Wattage": "60"
+        },
+        {
+            "ICName": "TDA7231A 1.6W audio amplifier pdf",
+            "Wattage": "1.6"
+        },
+        {
+            "ICName": "TDA7233 1W AUDIO AMPLIFIER WITH MUTE pdf",
+            "Wattage": "1"
+        },
+        {
+            "ICName": "TDA7233S 1W audio amplifier with mute pdf",
+            "Wattage": "1"
+        },
+        {
+            "ICName": "TDA7235 1.6W AUDIO AMPLIFIER pdf",
+            "Wattage": "1.6"
+        },
+        {
+            "ICName": "TDA7240A 20W bridge amplifier for car radio pdf",
+            "Wattage": "20"
+        },
+        {
+            "ICName": "TDA7250 60W HI-FI DUAL AUDIO DRIVER pdf",
+            "Wattage": "60"
+        },
+        {
+            "ICName": "TDA7253 8W amplifier with muting pdf",
+            "Wattage": "8"
+        },
+        {
+            "ICName": "TDA7253L 6W amplifier with muting pdf",
+            "Wattage": "6"
+        },
+        {
+            "ICName": "TDA7256 30W bridge car radio amplifier pdf",
+            "Wattage": "30"
+        },
+        {
+            "ICName": "TDA7261 25W mono amplifier with mute/st-by pdf",
+            "Wattage": "25"
+        },
+        {
+            "ICName": "TDA7262 20 + 20W stereo amplifier with stand-by pdf",
+            "Wattage": "20"
+        },
+        {
+            "ICName": "TDA7263 12+12W stereo amplifier with muting pdf",
+            "Wattage": "12"
+        },
+        {
+            "ICName": "TDA7263L 6+6W stereo amplifier with muting pdf",
+            "Wattage": "6"
+        },
+        {
+            "ICName": "TDA7263M 12 + 12W stereo amplifier with muting pdf",
+            "Wattage": "12"
+        },
+        {
+            "ICName": "TDA7264 25 + 25W STEREO AMPLIFIER WITH MUTE/ST-BY pdf",
+            "Wattage": "25"
+        },
+        {
+            "ICName": "TDA7265 25 + 25W stereo amplifier with mute & stand-by pdf",
+            "Wattage": "25"
+        },
+        {
+            "ICName": "TDA7265SA 18W+18W stereo amplifier with mute & st-by pdf",
+            "Wattage": "18"
+        },
+        {
+            "ICName": "TDA7266 7+7W dual bridge amplifier pdf",
+            "Wattage": "7"
+        },
+        {
+            "ICName": "TDA7266D 5W+5W dual bridge amplifier pdf",
+            "Wattage": "5"
+        },
+        {
+            "ICName": "TDA7266L 5W mono bridge amplifier pdf",
+            "Wattage": "5"
+        },
+        {
+            "ICName": "TDA7266M 7W mono bridge amplifier pdf",
+            "Wattage": "7"
+        },
+        {
+            "ICName": "TDA7266P 3+3W dual bridge amplifier pdf",
+            "Wattage": "3"
+        },
+        {
+            "ICName": "TDA7266S 5+5W dual bridge amplifier pdf",
+            "Wattage": "5"
+        },
+        {
+            "ICName": "TDA7266SA 7W+7W dual bridge amplifier pdf",
+            "Wattage": "7"
+        },
+        {
+            "ICName": "TDA7267 2W mono amplifier pdf",
+            "Wattage": "2"
+        },
+        {
+            "ICName": "TDA7267A 3W mono amplifier pdf",
+            "Wattage": "3"
+        },
+        {
+            "ICName": "TDA7268 2 X 2W stereo audio amplifier pdf",
+            "Wattage": "2"
+        },
+        {
+            "ICName": "TDA7269 10 + 10W stereo amplifier with mute & st-by pdf",
+            "Wattage": "10"
+        },
+        {
+            "ICName": "TDA7269A 14 + 14W stereo amplifier with mute & st-by pdf",
+            "Wattage": "14"
+        },
+        {
+            "ICName": "TDA7269ASA 14W+14W STEREO AMPLIFIER WITH MUTE &ST-BY pdf",
+            "Wattage": "14"
+        },
+        {
+            "ICName": "TDA7269SA 10W+10W stereo amplifier with mute & stby pdf",
+            "Wattage": "10"
+        },
+        {
+            "ICName": "TDA7293TDA7293V 120V-100W DMOS audio amplifier with mute/st-by pdf",
+            "Wattage": "100"
+        },
+        {
+            "ICName": "TDA7294 100V - 100W DMOS audio amplifier with mute st-by pdf",
+            "Wattage": "100"
+        },
+        {
+            "ICName": "TDA7294S 100V -100W DMOS audio amplifier with mute/standby pdf",
+            "Wattage": "100"
+        },
+        {
+            "ICName": "TDA7295 80V-80W DMOS audio amplifier with mute st-by pdf",
+            "Wattage": "80"
+        },
+        {
+            "ICName": "TDA7295S 80V - 80W DMOS audio amplifier with mute/st-by pdf",
+            "Wattage": "80"
+        },
+        {
+            "ICName": "TDA7296 70V-60W DMOS AUDIO AMPLIFIER WITH MUTE ST-BY pdf",
+            "Wattage": "60"
+        },
+        {
+            "ICName": "TDA7296S 70V - 60W DMOS audio amplifier with mute/st-by pdf",
+            "Wattage": "60"
+        },
+        {
+            "ICName": "TDA7297 15+15W dual bridge amplifier pdf",
+            "Wattage": "15"
+        },
+        {
+            "ICName": "TDA7297D 10W+10W dual bridge amplifier pdf",
+            "Wattage": "10"
+        },
+        {
+            "ICName": "TDA7297SA 10W+10W dual bridge amplifier pdf",
+            "Wattage": "10"
+        },
+        {
+            "ICName": "TDA7298 28W hi-fi audio power amplifier with mute/st-by pdf",
+            "Wattage": "28"
+        },
+        {
+            "ICName": "TDA7299 Sound 2W mono amplifier pdf",
+            "Wattage": "2"
+        },
+        {
+            "ICName": "TDA7350A 22W bridge-stereo amplifier for car radio pdf",
+            "Wattage": "22"
+        },
+        {
+            "ICName": "TDA7360 22W bridge stereo audio amplifier with clipping detector pdf",
+            "Wattage": "22"
+        },
+        {
+            "ICName": "TDA7365 2 X 6W car radio amplifier plus solid state switch pdf",
+            "Wattage": "6"
+        },
+        {
+            "ICName": "TDA7370B Quad power amplifier for car radio pdf",
+            "Wattage": "20"
+        },
+        {
+            "ICName": "TDA7372A 4 X 6W power amplifier for car radio pdf",
+            "Wattage": "6"
+        },
+        {
+            "ICName": "TDA7372B 4 X 6W power amplifier for car radio pdf",
+            "Wattage": "6"
+        },
+        {
+            "ICName": "TDA7375AV 2 X 37W DUAL QUAD POWER AMPLIFIER FOR CAR RADIO pdf",
+            "Wattage": "37"
+        },
+        {
+            "ICName": "TDA7375V 2 x 35W dual/quad power amplifier for car radio pdf",
+            "Wattage": "35"
+        },
+        {
+            "ICName": "TDA7376B 2 X 35W power amplifier for car radio pdf",
+            "Wattage": "35"
+        },
+        {
+            "ICName": "TDA7376P 2 x 35W power amplifier for car radio pdf",
+            "Wattage": "35"
+        },
+        {
+            "ICName": "TDA7376PD 2 x 35W power amplifier for car radio pdf",
+            "Wattage": "35"
+        },
+        {
+            "ICName": "TDA7381 4 x 25W quad bridge car radio amplifier pdf",
+            "Wattage": "25"
+        },
+        {
+            "ICName": "TDA7382 4 X 22W four bridge channels car radio amplifier pdf",
+            "Wattage": "22"
+        },
+        {
+            "ICName": "TDA7383 4 X 30W quad bridge car radio amplifier pdf",
+            "Wattage": "30"
+        },
+        {
+            "ICName": "TDA7384A 4 x 42W quad bridge car radio amplifier pdf",
+            "Wattage": "42"
+        },
+        {
+            "ICName": "TDA7385 4X30W quad bridge car radio amplifier pdf",
+            "Wattage": "30"
+        },
+        {
+            "ICName": "TDA7386 4x45W quad bridge car radio amplifier pdf",
+            "Wattage": "45"
+        },
+        {
+            "ICName": "TDA7388A 4 x 42W quad bridge car radio amplifier pdf",
+            "Wattage": "42"
+        },
+        {
+            "ICName": "TDA7389 4 x 45W quad bridge car radio amplifier pdf",
+            "Wattage": "45"
+        },
+        {
+            "ICName": "TDA7389A 4 x 45W quad bridge car radio amplifier pdf",
+            "Wattage": "45"
+        },
+        {
+            "ICName": "TDA7391 35W bridge car radio amplifier pdf",
+            "Wattage": "35"
+        },
+        {
+            "ICName": "TDA7391P 32 W bridge car radio amplifier pdf",
+            "Wattage": "32"
+        },
+        {
+            "ICName": "TDA7391PD 32 W bridge car radio amplifier pdf",
+            "Wattage": "32"
+        },
+        {
+            "ICName": "TDA7393 2 X 32W dual bridge car radio amplifier pdf",
+            "Wattage": "32"
+        },
+        {
+            "ICName": "TDA7396 45W/2OHM bridge car radio amplifier with diagnostic facility pdf",
+            "Wattage": "45"
+        },
+        {
+            "ICName": "TDA7451 4X7W OR 2X22W CAR RADIO POWER AMPLIFIER PLUS TRIPLE POWER SUPPLY pdf",
+            "Wattage": "22"
+        },
+        {
+            "ICName": "TDA7454 4 x 35W high efficiency quad bridge car radio power amplifier pdf",
+            "Wattage": "35"
+        },
+        {
+            "ICName": "TDA7480 10W mono class-D amplifier pdf",
+            "Wattage": "10"
+        },
+        {
+            "ICName": "TDA7481 18W mono class-D amplifier pdf",
+            "Wattage": "18"
+        },
+        {
+            "ICName": "TDA7482 25W mono class-D amplifier pdf",
+            "Wattage": "25"
+        },
+        {
+            "ICName": "TDA7490 25W + 25W STEREO CLASS-D AMPLIFIER 50W MONO IN B pdf",
+            "Wattage": "25"
+        },
+        {
+            "ICName": "TDA7490L 20W+20W stereo class-D amplifier 40W mono in BTL pdf",
+            "Wattage": "20"
+        },
+        {
+            "ICName": "TDA7490LSA 15W +15W Stereo Class-D Amplifier pdf",
+            "Wattage": "15"
+        },
+        {
+            "ICName": "TDA7490SA 10W+10W stereo class-D amplifier pdf",
+            "Wattage": "10"
+        },
+        {
+            "ICName": "TDA7491HV 20 W + 20 W dual BTL class-D audio amplifier pdf",
+            "Wattage": "20"
+        },
+        {
+            "ICName": "TDA7493 2.8 W + 2.8 W dual BTL class-D audio amplifier pdf",
+            "Wattage": "2.8"
+        },
+        {
+            "ICName": "TDA7494 10W amplifier with DC volume control pdf",
+            "Wattage": "10"
+        },
+        {
+            "ICName": "TDA7494S 10W amplifier pdf",
+            "Wattage": "10"
+        },
+        {
+            "ICName": "TDA7495 11W+11W amplifier with DC volume control pdf",
+            "Wattage": "11"
+        },
+        {
+            "ICName": "TDA7495S 11W+11W amplifier pdf",
+            "Wattage": "11"
+        },
+        {
+            "ICName": "TDA7495SA 11 W + 11 W amplifier with DC volume control pdf",
+            "Wattage": "11"
+        },
+        {
+            "ICName": "TDA7496 5W+5W amplifier with DC volume control pdf",
+            "Wattage": "5"
+        },
+        {
+            "ICName": "TDA7496L 2W+2W amplifier with DC volume control pdf",
+            "Wattage": "2"
+        },
+        {
+            "ICName": "TDA7496S 5W+5W amplifier pdf",
+            "Wattage": "5"
+        },
+        {
+            "ICName": "TDA7496SA 5W+5W amplifier with DC volume control pdf",
+            "Wattage": "5"
+        },
+        {
+            "ICName": "TDA7496SSA 5W+5W AMPLIFIER pdf",
+            "Wattage": "5"
+        },
+        {
+            "ICName": "TDA7497 10W+10W+10W 18W triple amplifier pdf",
+            "Wattage": "10"
+        },
+        {
+            "ICName": "TDA7497S 8W+8W+15W triple amplifier pdf",
+            "Wattage": "15"
+        },
+        {
+            "ICName": "TDA7497SA 8W+8W+15W TRIPLE AMPLIFIER pdf",
+            "Wattage": "15"
+        },
+        {
+            "ICName": "TDA7499 6W+6W stereo amplifier with mute & st-by pdf",
+            "Wattage": "6"
+        },
+        {
+            "ICName": "TDA7499SA 6W+6W stereo amplifier with mute & st-by pdf",
+            "Wattage": "6"
+        },
+        {
+            "ICName": "TDA7563A 4 x 50W multifunction quad power amplifier with built-in diagnostics feature pdf",
+            "Wattage": "50"
+        },
+        {
+            "ICName": "TDA7563B 4 x 50W multifunction quad power amplifier with built-in diagnostics feature pdf",
+            "Wattage": "50"
+        },
+        {
+            "ICName": "TDA7564B 4 x 50W multifunction quad power amplifier with built-in diagnostics features pdf",
+            "Wattage": "50"
+        },
+        {
+            "ICName": "TDA7570 250W PWM high efficiency power audio amplifier pdf",
+            "Wattage": "250"
+        },
+        {
+            "ICName": "TDA7572 200W mono bridge PWM amplifier with built-in step-up converter pdf",
+            "Wattage": "200"
+        },
+        {
+            "ICName": "TDA7575B 2 x 75W multifunction dual-bridge power amplifier with integrated digital diagnostics pdf",
+            "Wattage": "75"
+        },
+        {
+            "ICName": "TDA7850 4 x 50 W MOSFET quad bridge power amplifier plus HSD pdf",
+            "Wattage": "50"
+        },
+        {
+            "ICName": "TDA7850A 4 x 50 W MOSFET quad bridge power amplifier plus HSD pdf",
+            "Wattage": "50"
+        },
+        {
+            "ICName": "TDA7854 4 x 47W MOSFET quad bridge power amplifier pdf",
+            "Wattage": "47"
+        },
+        {
+            "ICName": "TDA1010A/1020 Preamplifier plus 3,4 to 12 W power amplifier",
+            "Wattage": "12"
+        },
+        {
+            "ICName": "TDA1011 6,5 W amplifier",
+            "Wattage": "5"
+        },
+        {
+            "ICName": "TDA1013B 4 W to 10 W amplifier with DC volume control",
+            "Wattage": "10"
+        },
+        {
+            "ICName": "TDA1015 4 W amplifier",
+            "Wattage": "4"
+        },
+        {
+            "ICName": "TDA1015T 500 mW amplifier",
+            "Wattage": "0.5"
+        },
+        {
+            "ICName": "TDA1016 2 W power and record/playback preamplifier",
+            "Wattage": "2"
+        },
+        {
+            "ICName": "TDA1308T 2 × 60 mW headphone/line output driver",
+            "Wattage": "0.06"
+        },
+        {
+            "ICName": "TDA1510AQ/1515BQ 24 W BTL or 2 × 12 W amplifiers",
+            "Wattage": "12"
+        },
+        {
+            "ICName": "TDA1514A 50 W high-performance hi-fi amplifier",
+            "Wattage": "50"
+        },
+        {
+            "ICName": "TDA1516BQ/1516CQ/1518BQ 24 W BTL or 2 × 12 W amplifiers",
+            "Wattage": "12"
+        },
+        {
+            "ICName": "TDA1517(P)/1519 2 × 6 W amplifiers",
+            "Wattage": "6"
+        },
+        {
+            "ICName": "TDA1519A/1519B 22 W BTL or 2 × 11 W/12 W BTL or 2 × 6 W amplifiers",
+            "Wattage": "22"
+        },
+        {
+            "ICName": "TDA1521(Q)/2616(Q) 2 × 12 W hi-fi amplifiers",
+            "Wattage": "12"
+        },
+        {
+            "ICName": "TDA1521A/2615 2 × 6 W hi-fi amplifiers",
+            "Wattage": "6"
+        },
+        {
+            "ICName": "TDA1552Q/1553Q/1553CQ/1557Q 2 × 22 W BTL amplifiers",
+            "Wattage": "22"
+        },
+        {
+            "ICName": "TDA1554Q/1555Q/1558Q 2 × 22 W BTL or 4 × 11 W amplifiers",
+            "Wattage": "22"
+        },
+        {
+            "ICName": "TDA1556Q 2 × 22 W BTL amplifier with differential inputs",
+            "Wattage": "22"
+        },
+        {
+            "ICName": "TDA1560Q 40 W class-H amplifier",
+            "Wattage": "40"
+        },
+        {
+            "ICName": "TDA1561Q 2 × 23 W high-efficiency power amplifier",
+            "Wattage": "23"
+        },
+        {
+            "ICName": "TDA2611A 4 W to 10 W amplifier",
+            "Wattage": "10"
+        },
+        {
+            "ICName": "TDA2613/2614 6 W hi-fi amplifiers",
+            "Wattage": "6"
+        },
+        {
+            "ICName": "TDA7050(T) 150 mW BTL or 2 × 75 mW low-voltage amplifier",
+            "Wattage": "0.15"
+        },
+        {
+            "ICName": "TDA7052/7053 1 W/2 × 1 W BTL amplifiers",
+            "Wattage": "2"
+        },
+        {
+            "ICName": "TDA7052A(AT)/7052B(BT) 1 W/0,5 W BTL amplifier with DC volume control",
+            "Wattage": "0.5"
+        },
+        {
+            "ICName": "TDA7053A(AT) 2 × 1 W/0,5 W BTL amplifier with DC volume control",
+            "Wattage": "1"
+        },
+        {
+            "ICName": "TDA7056/7057Q 3 W/2 × 3 W BTL amplifiers",
+            "Wattage": "3"
+        },
+        {
+            "ICName": "TDA7056A/7056B 5 W BTL amplifier with DC volume control",
+            "Wattage": "5"
+        },
+        {
+            "ICName": "TDA7057AQ 2 × 5 W BTL amplifier with DC volume control",
+            "Wattage": "5"
+        },
+        {
+            "ICName": "TDA8541(T) 1 W BTL amplifiers",
+            "Wattage": "1"
+        },
+        {
+            "ICName": "TDA8542(T) 2 × 1 W BTL amplifiers",
+            "Wattage": "2"
+        },
+        {
+            "ICName": "TDA8543(T) 2 W BTL amplifiers",
+            "Wattage": "2"
+        },
+        {
+            "ICName": "TDA8547(T) 2 × 1 W BTL amplifiers with standby selection",
+            "Wattage": "2"
+        },
+        {
+            "ICName": "TDA8551(T) 1 W BTL amplifiers with digital volume control",
+            "Wattage": "1"
+        },
+        {
+            "ICName": "TDA8560Q/8563Q/8563AQ 2 × 40 W BTL amplifier with diagnostics",
+            "Wattage": "40"
+        },
+        {
+            "ICName": "TDA8561Q/8564Q 2 × 24 W/4 × 7 W amplifier with diagnostics",
+            "Wattage": "24"
+        },
+        {
+            "ICName": "TDA8562Q/8565Q 4 × 12 W amplifier with diagnostics",
+            "Wattage": "12"
+        },
+        {
+            "ICName": "TDA8566Q 2 × 25 W BTL power amplifier with differential inputs",
+            "Wattage": "25"
+        },
+        {
+            "ICName": "TDA8567Q/8568Q/8569Q 4 × 25 W BTL amplifiers",
+            "Wattage": "25"
+        }
+    ]
+}
+
+var R1,R2,i=0,icname=[],str="",watt=[],flag=0;
+for(i=0;i<=153;i++){
+	icname[i]=tab.Table[i].ICName;
+	watt[i]=parseInt(tab.Table[i].Wattage);
+}
+
+function res(){
+  R1=parseInt(document.getElementById("r1").value);//lower
+  R2=parseInt(document.getElementById("r2").value);//upper
+  if(R1>R2)
+  	alert("lower cannot be greater than upper, re-enter values");
+  else{
+  	for(i=0;i<=153;i++){
+  		if(watt[i]>=R1 && watt[i]<=R2){
+  			str+=icname[i]+"<br>";
+        flag=1;
+      }
+  	}
+    if(flag=1){
+	     document.getElementById("demo").innerHTML=str;
+       str="";
+       flag=0;
+     }
+    else {
+      document.getElementById("demo").innerHTML="Sorry no IC available, try to enter wide ranges";
+      str="";
+    }
+  }
+}
+function reset(){
+ flag=0;
+ document.getElementById('r1').value="";
+ document.getElementById('r2').value="";
+ document.getElementById('demo').innerHTML="";
+ str="";
+}
+</script>
+</html>
