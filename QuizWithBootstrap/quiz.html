@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+    <title>SampleQuiz</title>
+ 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<style type="text/css">
+		#snackbar {
+	  visibility: hidden;
+	  min-width: 250px;
+	  margin-left: -125px;
+	  background-color: #333;
+	  color: #fff;
+	  text-align: center;
+	  border-radius: 2px;
+	  padding: 16px;
+	  position: fixed;
+	  z-index: 1;
+	  left: 50%;
+	  bottom: 30px;
+	  font-size: 17px;
+	}
+
+	#snackbar.show {
+	  visibility: visible;
+	  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+	}
+
+	@-webkit-keyframes fadein {
+	  from {bottom: 0; opacity: 0;} 
+	  to {bottom: 30px; opacity: 1;}
+	}
+
+	@keyframes fadein {
+	  from {bottom: 0; opacity: 0;}
+	  to {bottom: 30px; opacity: 1;}
+	}
+
+	@-webkit-keyframes fadeout {
+	  from {bottom: 30px; opacity: 1;} 
+	  to {bottom: 0; opacity: 0;}
+	}
+
+	@keyframes fadeout {
+	  from {bottom: 30px; opacity: 1;}
+	  to {bottom: 0; opacity: 0;}
+	}
+
+
+
+    .main { 
+        position: relative; 
+        padding-left: 45px; 
+        margin-bottom: 15px; 
+        cursor: pointer; 
+        font-size: 20px; 
+    } 
+      
+    /* Hide the default checkbox */ 
+    input[type=checkbox] { 
+        visibility: hidden; 
+    } 
+          
+    /* Creating a custom checkbox 
+       based on demand */ 
+    .geekmark { 
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        height: 25px; 
+        width: 25px; 
+        background-color: silver; 
+    } 
+          
+    /* Specify the background color to be 
+    shown when hovering over checkbox */ 
+    .main:hover input ~ .geekmark { 
+        background-color: #228B22; 
+    } 
+      
+    /* Specify the background color to be 
+    shown when checkbox is active */ 
+    .main input:active ~ .geekmark { 
+        background-color: #32CD32; 
+    } 
+      
+    /* Specify the background color to be 
+    shown when checkbox is checked */ 
+    .main input:checked ~ .geekmark { 
+        background-color: green; 
+    } 
+      
+    /* Checkmark to be shown in checkbox */ 
+    /* It is not be shown when not checked */ 
+    .geekmark:after { 
+        content: ""; 
+        position: absolute; 
+        display: none; 
+    } 
+      
+    /* Display checkmark when checked */ 
+    .main input:checked ~ .geekmark:after { 
+        display: block; 
+    } 
+      
+    /* Styling the checkmark using webkit */ 
+    /* Rotated the rectangle by 45 degree and  
+    showing only two border to make it look 
+    like a tickmark */ 
+    .main .geekmark:after { 
+        left: 8px; 
+        bottom: 5px; 
+        width: 6px; 
+        height: 12px; 
+        border: solid white; 
+        border-width: 0 4px 4px 0; 
+        -webkit-transform: rotate(45deg); 
+        -ms-transform: rotate(45deg); 
+        transform: rotate(45deg); 
+    } 
+
+
+
+	input[type='radio']:after {
+        width: 18px;
+        height: 18px;
+        border-radius: 20px;
+        top: -8px;
+        left: -1px;
+        position: relative;
+        background-color: #d1d3d1;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+    }
+
+    input[type='radio']:checked:after {
+        width: 18px;
+        height: 18px;
+        border-radius: 20px;
+        top: -8px;
+        left: -1px;
+        position: relative;
+        background-color: #ffa500;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid black;
+    }
+	.modal-footer {
+    background-color: #f9f9f9;
+ 	}
+  	.modal-header, h4, .close {
+	    background-color: #5cb85c;
+	    color:white !important;
+	    text-align: center;
+	    font-size: 30px;
+	}
+</style>
+
+<body class="text-center">
+	<br><br>
+    <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="image" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Please Enter Your Name and email to start</h1>
+    
+   <div class="container">
+    	<div class="row">	
+		    <div>
+		    	<label for="Name">Name</label>
+		    	<input type="text" id="Name" class="form-control"  placeholder="Name" required>
+		    </div>
+		</div>
+		<br><br>
+		<div class="row">    
+		    <div>
+		    	<label for="inputEmail">Email address</label>
+		    	<input type="email" id="inputEmail"  class="form-control" placeholder="Email address" required>
+		    </div> 
+		</div>    
+		    <br><br>
+		    <p class="text-justify" style="font-size: 18px"><b><i>Instructions:</i></b>This Quiz contains 10 questions. You can visit a particular question only once. Click next to move on to next question. On correct selection, you'll see "Correct" message at bottom or "Try next one" when not selected or incorrect. Time is only 100sec for 10 questions, so a rapid quiz round. Each question has 1 answer correct and has 1 mark. No negative marking. All the best!</p>
+		    <br>
+		<div class="row">     	
+		        <label class="main">I have read all instructions and am ready to start
+	        		<input type="checkbox" id="checkbox" required> 
+	        		<span class="geekmark"></span> 
+    			</label> 
+		</div>
+	</div>
+     
+     <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
+	  <!-- Trigger the modal with a button -->
+	 <button type="button" class="btn btn-success btn-lg" id="myBtn" onclick="check(this.id)">Start Quiz</button>
+	 
+
+	<div class="container">
+	     <!-- Modal -->
+	  	<div class="modal fade" id="myModal1" role="dialog" data-backdrop="static" data-keyboard="false">
+	    	<div class="modal-dialog">
+	    
+	    		<!-- Modal content-->
+	    		<div class="modal-content">
+	        		<div class="modal-header">
+	          			<button type="button" class="close" data-dismiss="modal" onclick="finish()">&times;</button>
+	          			<h4 class="modal-title">1. Least voltage a STM32 microcontroller can measure using onchip ADC, with refernce voltage 3.3V is:</h4>
+	          			<br><b>Hint:</b> STM32 has a 12bit ADC.
+	        		</div>
+	        		<div class="modal-body">
+	          			<div class="radio" style="font-size: 25px">
+  							<label><input type="radio" name="optradio" value="1">4.88mV</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="2" id="q1">0.805mV</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="3">8.05mV</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="4">10mV</label>
+						</div>
+	        		</div>
+
+	        		<hr>
+	        		<div  class="text-center">
+	          			<p>Time remaining: <i id="time1"></i> sec</p>
+	          			<button type="button" class="btn btn-primary" id="next1" onclick="check(this.id)">Next &gt&gt</button>
+	        		</div>
+	        		<br>
+	        		<div class="modal-footer">
+	          			<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="finish()">Close</button>
+	        		</div>
+	        	</div>
+	      
+	     	</div>
+	 	</div>
+  
+	 </div>
+
+
+
+	<div class="container">
+	     <!-- Modal -->
+	  	<div class="modal fade" id="myModal2" role="dialog" data-backdrop="static" data-keyboard="false">
+	    	<div class="modal-dialog">
+	    
+	    		<!-- Modal content-->
+	    		<div class="modal-content">
+	        		<div class="modal-header">
+	          			<button type="button" class="close" data-dismiss="modal" onclick="finish()">&times;</button>
+	          			<h4 class="modal-title">2. Which one of the following actuators has a closed loop system</h4>
+	        		</div>
+	        		<div class="modal-body">
+	          			<div class="radio" style="font-size: 25px">
+  							<label><input type="radio" name="optradio" value="1">DC Motor</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="2">Speaker</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="3">Relay</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="4" id="q2" >Servo Motor</label>
+						</div>
+	        		</div>
+
+	        		<hr>
+	        		<div  class="text-center">
+	          			<p>Time remaining: <i id="time2"></i> sec</p>
+	          			<button type="button" class="btn btn-primary" id="next2" onclick="check(this.id)">Next &gt&gt</button>
+	        		</div>
+	        		<br>
+	        		<div class="modal-footer">
+	          			<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="finish()">Close</button>
+	        		</div>
+	        	</div>
+	      
+	     	</div>
+	 	</div>
+  
+	 </div>
+
+
+	 <div class="container">
+	     <!-- Modal -->
+	  	<div class="modal fade" id="myModal3" role="dialog" data-backdrop="static" data-keyboard="false">
+	    	<div class="modal-dialog">
+	    
+	    		<!-- Modal content-->
+	    		<div class="modal-content">
+	        		<div class="modal-header">
+	          			<button type="button" class="close" data-dismiss="modal" onclick="finish()">&times;</button>
+	          			<h4 class="modal-title">3. TLO74 and CA3140 has __ and __ number of OPAMPS respectively:</h4>
+	        		</div>
+	        		<div class="modal-body">
+	          			<div class="radio" style="font-size: 25px">
+  							<label><input type="radio" name="optradio" value="1">4,4</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="2">1,4</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="3" id="q3">4,1</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="4">4,2</label>
+						</div>
+	        		</div>
+
+	        		<hr>
+	        		<div  class="text-center">
+	          			<p>Time remaining: <i id="time3"></i> sec</p>
+	          			<button type="button" class="btn btn-primary" id="next3" onclick="check(this.id)">Next &gt&gt</button>
+	        		</div>
+	        		<br>
+	        		<div class="modal-footer">
+	          			<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="finish()">Close</button>
+	        		</div>
+	        	</div>
+	      
+	     	</div>
+	 	</div>
+  
+	 </div>
+
+
+<div class="container">
+	     <!-- Modal -->
+	  	<div class="modal fade" id="myModal4" role="dialog" data-backdrop="static" data-keyboard="false">
+	    	<div class="modal-dialog">
+	    
+	    		<!-- Modal content-->
+	    		<div class="modal-content">
+	        		<div class="modal-header">
+	          			<button type="button" class="close" data-dismiss="modal" onclick="finish()">&times;</button>
+	          			<h4 class="modal-title">4. Which of the following is an analog sensor (i.e.,generates analog output)?</h4>
+	        		</div>
+	        		<div class="modal-body">
+	          			<div class="radio" style="font-size: 25px">
+  							<label><input type="radio" name="optradio" value="1">DHT22</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="2">MFRC552</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="3">BMP280</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="4" id="q4">ADXL335</label>
+						</div>
+	        		</div>
+
+	        		<hr>
+	        		<div  class="text-center">
+	          			<p>Time remaining: <i id="time4"></i> sec</p>
+	          			<button type="button" class="btn btn-primary" id="next4" onclick="check(this.id)">Next &gt&gt</button>
+	        		</div>
+	        		<br>
+	        		<div class="modal-footer">
+	          			<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="finish()">Close</button>
+	        		</div>
+	        	</div>
+	      
+	     	</div>
+	 	</div>
+  
+	 </div>
+
+
+	 <div class="container">
+	     <!-- Modal -->
+	  	<div class="modal fade" id="myModal5" role="dialog" data-backdrop="static" data-keyboard="false">
+	    	<div class="modal-dialog">
+	    
+	    		<!-- Modal content-->
+	    		<div class="modal-content">
+	        		<div class="modal-header">
+	          			<button type="button" class="close" data-dismiss="modal" onclick="finish()">&times;</button>
+	          			<h4 class="modal-title">5. UART stands for?</h4>
+	        		</div>
+	        		<div class="modal-body">
+	          			<div class="radio" style="font-size: 25px">
+  							<label><input type="radio" name="optradio" value="1" id="q5">Universal asynchronous receiver-transmitter</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="2">Universal asynchronous receive-transmit</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="3">Universal synchronous receiver-transmitter</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="4">Ultimate asynchronous receiver-transmitter</label>
+						</div>
+	        		</div>
+
+	        		<hr>
+	        		<div  class="text-center">
+	          			<p>Time remaining: <i id="time5"></i> sec</p>
+	          			<button type="button" class="btn btn-primary" id="next5" onclick="check(this.id)">Next &gt&gt</button>
+	        		</div>
+	        		<br>
+	        		<div class="modal-footer">
+	          			<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="finish()">Close</button>
+	        		</div>
+	        	</div>
+	      
+	     	</div>
+	 	</div>
+  
+	 </div>
+
+	<div class="container">
+	     <!-- Modal -->
+	  	<div class="modal fade" id="myModal6" role="dialog" data-backdrop="static" data-keyboard="false">
+	    	<div class="modal-dialog">
+	    
+	    		<!-- Modal content-->
+	    		<div class="modal-content">
+	        		<div class="modal-header">
+	          			<button type="button" class="close" data-dismiss="modal" onclick="finish()">&times;</button>
+	          			<h4 class="modal-title">6. Which of the sensor/module used OneWire protocol?</h4>
+	        		</div>
+	        		<div class="modal-body">
+	          			<div class="radio" style="font-size: 25px">
+  							<label><input type="radio" name="optradio" value="1">DS3231</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="2" id="q6">DHT11</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="3">SIM900</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="4">MAX30100</label>
+						</div>
+	        		</div>
+
+	        		<hr>
+	        		<div  class="text-center">
+	          			<p>Time remaining: <i id="time6"></i> sec</p>
+	          			<button type="button" class="btn btn-primary" id="next6" onclick="check(this.id)">Next &gt&gt</button>
+	        		</div>
+	        		<br>
+	        		<div class="modal-footer">
+	          			<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="finish()">Close</button>
+	        		</div>
+	        	</div>
+	      
+	     	</div>
+	 	</div>
+  
+	</div>
+
+
+	<div class="container">
+	     <!-- Modal -->
+	  	<div class="modal fade" id="myModal7" role="dialog" data-backdrop="static" data-keyboard="false">
+	    	<div class="modal-dialog">
+	    
+	    		<!-- Modal content-->
+	    		<div class="modal-content">
+	        		<div class="modal-header">
+	          			<button type="button" class="close" data-dismiss="modal" onclick="finish()">&times;</button>
+	          			<h4 class="modal-title">7. Why snubber diodes are used?</h4>
+	        		</div>
+	        		<div class="modal-body">
+	          			<div class="radio" style="font-size: 25px">
+  							<label><input type="radio" name="optradio" value="1">To protect against short circuit</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="2">To protect against excessive heating</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="3">To protect against static currets</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="4" id="q7">To protect against inductive spikings</label>
+						</div>
+	        		</div>
+
+	        		<hr>
+	        		<div  class="text-center">
+	          			<p>Time remaining: <i id="time7"></i> sec</p>
+	          			<button type="button" class="btn btn-primary" id="next7" onclick="check(this.id)">Next &gt&gt</button>
+	        		</div>
+	        		<br>
+	        		<div class="modal-footer">
+	          			<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="finish()">Close</button>
+	        		</div>
+	        	</div>
+	      
+	     	</div>
+	 	</div>
+  
+	</div>
+
+
+
+	<div class="container">
+	     <!-- Modal -->
+	  	<div class="modal fade" id="myModal8" role="dialog" data-backdrop="static" data-keyboard="false">
+	    	<div class="modal-dialog">
+	    
+	    		<!-- Modal content-->
+	    		<div class="modal-content">
+	        		<div class="modal-header">
+	          			<button type="button" class="close" data-dismiss="modal" onclick="finish()">&times;</button>
+	          			<h4 class="modal-title">8. Code written for a microcontroller is stored in which memory of a microcontroller?</h4>
+	        		</div>
+	        		<div class="modal-body">
+	          			<div class="radio" style="font-size: 25px">
+  							<label><input type="radio" name="optradio" value="1">EEPROM</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="2">Data Memory</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="3" id="q8">Flash Memory</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="4">External ROM</label>
+						</div>
+	        		</div>
+
+	        		<hr>
+	        		<div  class="text-center">
+	          			<p>Time remaining: <i id="time8"></i> sec</p>
+	          			<button type="button" class="btn btn-primary" id="next8" onclick="check(this.id)">Next &gt&gt</button>
+	        		</div>
+	        		<br>
+	        		<div class="modal-footer">
+	          			<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="finish()">Close</button>
+	        		</div>
+	        	</div>
+	      
+	     	</div>
+	 	</div>
+  
+	</div>
+
+
+
+	<div class="container">
+	     <!-- Modal -->
+	  	<div class="modal fade" id="myModal9" role="dialog" data-backdrop="static" data-keyboard="false">
+	    	<div class="modal-dialog">
+	    
+	    		<!-- Modal content-->
+	    		<div class="modal-content">
+	        		<div class="modal-header">
+	          			<button type="button" class="close" data-dismiss="modal" onclick="finish()">&times;</button>
+	          			<h4 class="modal-title">9. Which IC provides optical isolation?</h4>
+	        		</div>
+	        		<div class="modal-body">
+	          			<div class="radio" style="font-size: 25px">
+  							<label><input type="radio" name="optradio" value="1">VIPer22A</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="2">MAX30100</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="3">DB107</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="4" id="q9">MCT12E</label>
+						</div>
+	        		</div>
+
+	        		<hr>
+	        		<div  class="text-center">
+	          			<p>Time remaining: <i id="time9"></i> sec</p>
+	          			<button type="button" class="btn btn-primary" id="next9" onclick="check(this.id)">Next &gt&gt</button>
+	        		</div>
+	        		<br>
+	        		<div class="modal-footer">
+	          			<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="finish()">Close</button>
+	        		</div>
+	        	</div>
+	      
+	     	</div>
+	 	</div>
+  
+	</div>
+
+
+	<div class="container">
+	     <!-- Modal -->
+	  	<div class="modal fade" id="myModal10" role="dialog" data-backdrop="static" data-keyboard="false">
+	    	<div class="modal-dialog">
+	    
+	    		<!-- Modal content-->
+	    		<div class="modal-content">
+	        		<div class="modal-header">
+	          			<button type="button" class="close" data-dismiss="modal" onclick="finish()">&times;</button>
+	          			<h4 class="modal-title">10. Which among the following is not a microcontroller?</h4>
+	        		</div>
+	        		<div class="modal-body">
+	          			<div class="radio" style="font-size: 25px">
+  							<label><input type="radio" name="optradio" value="1">AT89S52</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="2" id="q10">i80386</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="3">PIC16F877</label>
+						</div>
+						<div class="radio" style="font-size: 25px">
+ 							 <label><input type="radio" name="optradio" value="4">68HC908</label>
+						</div>
+	        		</div>
+
+	        		<hr>
+	        		<div  class="text-center">
+	          			<p>Time remaining: <i id="time10"></i> sec</p>
+	          			<button type="button" class="btn btn-success" id="finish" onclick="check(this.id)">Finish</button>
+	        		</div>
+	        		<br>
+	        		<div class="modal-footer">
+	          			<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="finish()">Close</button>
+	        		</div>
+	        	</div>
+	      
+	     	</div>
+	 	</div>
+  
+	</div>
+
+
+	<div class="container">
+	     <!-- Modal -->
+	  	<div class="modal fade" id="myModalAns" role="dialog" data-backdrop="static" data-keyboard="false">
+	    	<div class="modal-dialog">
+	    
+	    		<!-- Modal content-->
+	    		<div class="modal-content">
+	        		<div class="modal-header">
+	          			<button type="button" class="close" data-dismiss="modal" onclick="finish()">&times;</button>
+	          			<h4 class="modal-title">Scorecard</h4>
+	        		</div>
+	        		<div class="modal-body">
+	          			<p class="text-justify">Dear <b id="scorename"></b>, Your score is <b id="score"></b>.</p>
+	        		</div>
+
+	        		<hr>
+	        		<div  class="text-center">
+	          			<p class="text-justify"> Thank you for using it</p>
+	          			<button type="button" class="btn btn-warning" id=showans>Generate Report & Show Answers</button>
+	          			<p id="ans" class="text-justify"></p>
+	        		</div>
+	        		<br>
+	        		<div class="modal-footer">
+	          			<button type="button" class="btn btn-danger" data-dismiss="modal" onclick="finish()">Close</button>
+	        		</div>
+	        	</div>
+	      
+	     	</div>
+	 	</div>
+  
+	</div>
+
+
+<div id="snackbar"><i id="msg"></i></div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript">
+
+	var score=0,name="",timer,sec=100,showtime,reportName;
+	function showTime(){
+		sec--;
+		for(var i=1;i<=10;i++)
+			document.getElementById("time"+i.toString()).innerHTML=sec;
+	}
+
+	function finish(){
+		for(var i=1;i<=10;i++)
+			$("#myModal"+i.toString()).modal('hide');
+		$('#myModalAns').modal({backdrop: 'static', keyboard: false})
+		document.getElementById("scorename").innerHTML=name;
+		document.getElementById("score").innerHTML=score;
+		name="";
+		sec=0;
+		clearTimeout(timer);
+		clearInterval(showtime);
+		document.getElementById("Name").value="";
+		document.getElementById("inputEmail").value="";
+		document.getElementById("checkbox").checked=false;
+	}
+
+	function check(clicked){
+		var num=clicked;
+		if(num=="finish"){
+			clearTimeout(timer);
+			clearInterval(showtime);
+			$("#myModal10").modal('hide');
+			$('#myModalAns').modal({backdrop: 'static', keyboard: false})
+			if(document.getElementById("q10").checked==true){
+				score++;
+				snackbar(1);
+			}
+			else
+				snackbar(0);	
+			document.getElementById("scorename").innerHTML=name;
+			document.getElementById("score").innerHTML=score;
+			name="";
+			sec=0;
+			document.getElementById("Name").value="";
+			document.getElementById("inputEmail").value="";
+			document.getElementById("checkbox").checked=false;
+		}
+		else if(num=="myBtn"){
+			sec=100;
+			timer=setTimeout("finish()",100000);
+			showtime=setInterval("showTime()",1000);
+			if(document.getElementById("inputEmail").value!=null && document.getElementById("Name").value!=null && document.getElementById("checkbox").checked==true){
+    			if(document.getElementById("Name").value.length>=3){
+					score=0;
+					name=document.getElementById("Name").value;
+					reportName=name;
+					$('#myModal1').modal({backdrop: 'static', keyboard: false})
+				}
+				else
+					alert("Name must be greater than 2 characters");
+			}
+			else
+				alert("Please fill details to start");
+		}
+		else{
+			num=parseInt(clicked.substr(4,4));
+			$("#myModal"+num.toString()).modal('hide');
+			$("#myModal"+(num+1).toString()).modal('show');
+			if(document.getElementById("q"+num.toString()).checked==true){
+				score++;
+				snackbar(1);
+			}
+			else
+				snackbar(0);	
+		}
+		
+	}
+
+	function snackbar(num) {
+	  var x = document.getElementById("snackbar");
+	  if(num==1)
+	  	document.getElementById("msg").innerHTML="Correct!";
+	  else
+	  	document.getElementById("msg").innerHTML="Try next one";
+	  x.className = "show";
+	  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 1000);
+}
+
+</script>
+</html>
+
+
+<!--<!DOCTYPE html>
+<html>
+<head>
+	<title>quiz</title>
+</head>
+<body>
+	<button id="generate" onclick="SumOfSeries()">Generate Series</button>
+	<p id="result"></p>
+</body>
+<script type="text/javascript">
+	function fib(n) 
+	{
+		var f=[n+2]; // 1 extra to handle case, n = 0  
+	    /* 0th and 1st number of the series are 0 and 1*/
+	    var i;
+	    f[0] = 0; 
+	    f[1] = 1; 
+	    for (i = 2; i <= n; i++) 
+	    { 
+	       /* Add the previous 2 numbers in the series 
+	         and store it */
+	        f[i] = f[i-1] + f[i-2]; 
+	    } 
+	    return f[n]; 
+	}
+	function SumOfSeries() {
+		var i=0,c=0;
+		while(c<100){
+			if((c+fib(i))>100)
+				break;
+			else{
+				c+=fib(i);
+				i++;
+			}
+		}
+		document.getElementById("result").innerHTML=c ;
+	}
+</script>
+</html>		
+
+<html>
+  <body>
+    <h2>JavaScript Objects</h2>
+    <label for="dob">Enter Your DOB</label>
+    <input id="dob" type="date">
+    <input type="submit" onclick="getAge()">
+    <p id="showresults"></p>
+  </body>
+  <script type="text/javascript">
+  function getAge() {
+	  var date=document.getElementById("dob").value;
+	  var dob=date.split("-")[0];
+	  var d = new Date();
+	  var curyr=d.getFullYear();
+	  if(dob>curyr)
+	  	document.getElementById("showresults").innerHTML="Wrong date!!";
+	  else
+	  	document.getElementById("showresults").innerHTML="You are "+(curyr-dob).toString()+" year(s) old!!";
+ }
+ </script>
+</html>  -->
