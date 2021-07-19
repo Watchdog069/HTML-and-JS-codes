@@ -78,8 +78,8 @@
                 <option value=7>Violet</option>
                 <option value=8>Grey</option>
                 <option value=9>White</option>
-                <option value=10>Gold</option>
-                <option value=11>Silver</option>
+          <!--      <option value=10>Gold</option>
+                <option value=11>Silver</option>  -->
             </select>
         </div>
 
@@ -96,9 +96,9 @@
                 <option value=6>Blue</option>
                 <option value=7>Violet</option>
                 <option value=8>Grey</option>
-                <option value=9>White</option>
-                <option value=10>Gold</option>
-                <option value=11>Silver</option>
+                 <option value=9>White</option>
+             <!--   <option value=10>Gold</option>
+                <option value=11>Silver</option>  -->
             </select>
             
         </div>
@@ -117,8 +117,8 @@
                 <option value=7>Violet</option>
                 <option value=8>Grey</option>
                 <option value=9>White</option>
-                <option value=10>Gold</option>
-                <option value=11>Silver</option>
+        <!--        <option value=10>Gold</option>
+                <option value=11>Silver</option>  -->
             </select>
             
         </div>
@@ -185,18 +185,27 @@
 
 
     function calculate(){
-        var num,tol;
+        var num,tol,mul;
         if(document.getElementById("four").checked)
             num=parseInt(document.getElementById("sel1").value.toString()+document.getElementById("sel2").value.toString());
         if(document.getElementById("five").checked)
             num=parseInt(document.getElementById("sel1").value.toString()+document.getElementById("sel2").value.toString()+document.getElementById("sel5").value.toString());
-        var mul=Math.pow(10,parseInt(document.getElementById("sel3").value));
+        
         if(document.getElementById("sel4").value=="10")
             tol=10;
         if(document.getElementById("sel4").value=="11")
             tol=5;
+            
+        var tempMul = parseInt(document.getElementById("sel3").value);
+        if (tempMul == 10)
+               mul = 0.1;
+        else if (tempMul == 11)
+               mul = 0.01;
+        else       
+               mul=Math.pow(10,tempMul);    
+               
         //console.log(num*mul*(1+tol/100)); 
-        document.getElementById("ans").innerHTML="Required resistance is <b>"+num*mul.toString()+" ohms = "+abbrNum(num*mul,2).toString()+" ohms</b>.<br>Considering tolerance values it may vary from "+Math.round(num*mul*(1-tol/100))+" - "+Math.round(num*mul*(1+tol/100))+" ohms.";   
+        document.getElementById("ans").innerHTML="Required resistance is <b>"+num*mul+" ohms = "+abbrNum(num*mul,2).toString()+" ohms</b>.<br>Considering tolerance values it may vary from "+Math.round(num*mul*(1-tol/100))+" - "+Math.round(num*mul*(1+tol/100))+" ohms.";   
     }
 
     //https://stackoverflow.com/questions/2692323/code-golf-friendly-number-abbreviator
